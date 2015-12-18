@@ -1,0 +1,227 @@
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <style>
+            a{color: gray}
+            td{padding:0 15px 0 15px;}
+            p{text-align: center}
+            body{background-color: F0F4F5}
+        </style>
+    </head>
+    <!-- Title Header -->
+    <body>
+        <center>
+            <font size=7>
+                <a href="/index.html"
+                   style=" color:black;
+                           text-decoration: none">
+                    Nathaniel Woodthorpe</a>
+            </font>
+        </center>
+
+        <!-- Quick Links -->
+        <center>
+            <font size=5>
+                <b>
+                    <a target="_blank" href="/resume.pdf">Resume</a>
+                    * 
+                    <a href="/projects.html">Projects</a>
+                    * 
+                    <a href="/TexNotes/">Notes</a>
+                    *
+                    <a target="_blank" href="http://www.github.com/NATHAN4">Github</a>
+                    * 
+                    <a href="mailto:njwoodthorpe@gmail.com">Email</a>
+                </b>
+            </font>
+        </center>
+        <!-- Scripts -->
+        <script type="text/javascript">
+            var userip;
+        </script>
+       <script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+        <script>
+            var chosenCourse = "";
+            var chosenMonth = "";
+
+            function trafficAnalysis(){
+                var mobile = false;
+                var ip = userip;
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    mobile = true;
+                }
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        console.log(xmlhttp.responseText);
+                        if(xmlhttp.responseText == "recorded"){
+                            console.log("Analysis Recorded...");
+                        }else{
+                            console.log("Analysis not recorded...");
+                        }
+                    }
+                }
+                xmlhttp.open("GET", "submittraffic.php?mobile=" + mobile + "&ip=" + ip, true);
+                xmlhttp.send();
+            }
+
+            function loadNotes(course, month){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        var noteSpan = document.getElementById("avaliableNotesSpan");
+                        if(xmlhttp.responseText != "none"){
+                            var response = xmlhttp.responseText;
+                            var responseArray = response.split(".pdf");
+                            var path = course + "/" + month + "/";
+                            var spanString = "";
+                            spanString = "<table>";
+                            for(var i = 0; i<responseArray.length - 1; i++){
+                                var day = responseArray[i].substring(0, 2);
+                                var year = responseArray[i].substring(4, 6);
+                                var title =  responseArray[i].substr(responseArray[i].indexOf("!") + 1); //All chars after ;
+                                title = title.split("_").join(" ");
+                                spanString = spanString + "<tr><td>" + month + " " + day + ", 20" + year + "</td><td><b>" + title + "</b></td><td>" + "<a target=\"_blank\" href='" + path + responseArray[i] + ".pdf'>PDF</a></td></tr>";
+                                console.log(responseArray[i]);
+                            }
+                            spanString = spanString + "</table>";
+                            noteSpan.innerHTML = spanString;
+                        }else{
+                            noteSpan.innerHTML = "No notes!";
+                        }
+                    }
+                }
+                xmlhttp.open("GET", "findnotes.php?course=" + course + "&month=" + month, true);
+                xmlhttp.send();
+            }
+
+            function courseChosen(){
+                var courseSelector = document.getElementById("courseSelector");
+                var selectedCourse = courseSelector.options[courseSelector.selectedIndex].text;
+                if(selectedCourse != "Choose a course"){
+                    chosenCourse = selectedCourse;
+                    var courseSpan = document.getElementById("courseSpan");
+                    var monthSpan = document.getElementById("monthSpan");
+                    var chosenCourseSpan = document.getElementById("chosenCourse");
+                    chosenCourseSpan.innerHTML = "Select a Course: " + chosenCourse + "<br>";
+                    courseSpan.style.display = "none"
+                    monthSpan.style.display = "";
+                }
+            }
+
+            function monthChosen(){
+                var monthSelector = document.getElementById("monthSelector");
+                var selectedMonth = monthSelector.options[monthSelector.selectedIndex].text;
+                if(selectedMonth != "Choose a Month"){
+                    chosenMonth = selectedMonth;
+                    var monthSpan = document.getElementById("monthSpan");
+                    var chosenMonthSpan = document.getElementById("chosenMonth");
+                    monthSpan.style.display = "none";
+                    chosenMonthSpan.innerHTML = "Choose a Month: " + chosenMonth + "<br>";
+                    loadNotes(chosenCourse, chosenMonth);
+                }
+            }
+
+            function refresh(){
+                var courseSpan = document.getElementById("courseSpan");
+                var monthSpan = document.getElementById("monthSpan");
+                var noteSpan = document.getElementById("avaliableNotesSpan");
+                var monthSelector = document.getElementById("monthSelector");
+                var courseSelector = document.getElementById("courseSelector");
+                var chosenMonthSpan = document.getElementById("chosenMonth");
+                var chosenCourseSpan = document.getElementById("chosenCourse");
+
+                monthSelector.selectedIndex = 0;
+                courseSelector.selectedIndex = 0;
+                monthSpan.style.display = "none";
+                courseSpan.style.display = "";
+                noteSpan.innerHTML = "";
+                chosenMonthSpan.innerHTML = "";
+                chosenCourseSpan.innerHTML = "";
+            }
+
+            function clickMeClicked(){
+                var clickMeButton = document.getElementById("clickMeButton");
+                var clickMeForm = document.getElementById("clickMeForm");
+
+                clickMeButton.style.display = "none";
+                clickMeForm.style.display = "";
+            }
+
+            function clickMeSend() {
+                var textbox = document.getElementById("clickMeText");
+                var message = textbox.value;
+                console.log(message);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        console.log(xmlhttp.responseText);
+                        if(xmlhttp.responseText == "recorded"){
+                            console.log("Response Recorded...");
+                            var clickMeForm = document.getElementById("clickMeForm");
+                            var clickMeRecieved = document.getElementById("clickMeRecieved");
+
+                            clickMeForm.style.display = "none";
+                            clickMeRecieved.style.display = "";
+                        }else{
+                            console.log("Response not recorded...");
+                        }
+                    }
+                }
+                xmlhttp.open("GET", "submitmessage.php?message=" + message, true);
+                xmlhttp.send();
+            }
+            window.onload=trafficAnalysis;
+        </script>
+        <br>
+        <!-- Main Content -->
+        <p>
+        <font size=5>
+            <b>Notes:</b>
+            </br>
+        </font>
+        </br>
+
+        <font size=4>
+            <span id="chosenCourse"></span>
+            <span id="courseSpan" style="">
+                Select a Course:
+                <select onchange="courseChosen();" id="courseSelector">
+                    <option>Choose a course</option>
+                    <?php
+                        $avaliableCourses = array("Math135", "Math137");
+                        for($i = 0; $i<count($avaliableCourses); $i++){
+                            echo "<option> " . $avaliableCourses[$i] . "</option>";
+                        }
+                    ?>
+                </select>
+            </span>
+            <span id="chosenMonth"></span>
+            <span id="monthSpan" style="display:none">
+                Select a Month:
+                <select onchange="monthChosen();" id="monthSelector">
+                    <option>Choose a month</option>
+                    <?php
+                        $avaliableMonths = array("October", "November", "December");
+                        for($i = 0; $i<count($avaliableMonths); $i++){
+                            echo "<option> " . $avaliableMonths[$i] . "</option>";
+                        }
+                    ?>
+                </select>
+            </span>
+            <br>
+            <center><span id="avaliableNotesSpan"></span><br>
+            <input type=button value="Refresh" onclick="refresh()">
+            <br><br>
+                <span id="clickMeButton"><input type=button value="Click me." onclick="clickMeClicked()" style="color: magenta"></span>
+                <span id="clickMeForm" style="display:none"><h4>Hi!</h4><br<<br> Want to send me a message? Want to complain? Want to tell me a funny joke? Enter a message below and hit send :D<br><br><textarea id="clickMeText" name="clickMeText" maxlength=1000 cols=40 rows=4></textarea><input type=button value="Send" id="clickMeSend" name="clickMeSend" onclick="clickMeSend()"> </span>
+                <span id="clickMeRecieved" style="display:none">Message recieved! Thanks!</span>
+                <br><br>
+                P.S. All my LaTeX work (Including source code) is avaliable on my Github
+        </font>
+    </p>
+</body>
+</html>
