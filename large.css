@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts\Montserrat-Regular.otf') format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts\Montserrat-Bold.otf') format("opentype");
+    font-weight: 500;
+    font-style: bold;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts\Montserrat-Light.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts\Montserrat-Hairline.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts\Montserrat-Black.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+body {
+    margin-top: 20px;
+    background-color: #F1F1F1
+}
+
+a { text-decoration: none; color:gray; }
+a:visited { text-decoration: "#545454"; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+a#fade {
+  border-bottom: 1px solid rgba(192, 192, 192, 0);
+  
+  -webkit-transition: border 500ms ease;
+  -moz-transition: border 500ms ease;
+  -ms-transition: border 500ms ease;
+  -o-transition: border 500ms ease;
+  transition: border 500ms ease; 
+}
+
+a#fade:hover {
+  border-bottom: 1px solid rgba(144, 22, 17, 1);
+}
+
+.title {
+    font-family: Montserrat;
+    font-size: 60;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-align: center;
+    border-bottom: 1px solid "#";
+}
+
+.header {
+    font-family: Montserrat;
+    font-size: 20;
+    color: #545454;
+    font-weight: 300;
+    text-align: center;
+}
+
+#header-item {
+    display:inline-block;
+    text-align: center;
+    width: 100px;
+}
+
+.content {
+    font-family: Montserrat;
+    font-size: 18;
+    color: "#999999";
+    font-weight: 300;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+
+hr {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
