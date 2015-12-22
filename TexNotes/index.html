@@ -69,7 +69,7 @@
                                 var year = responseArray[i].substring(4, 6);
                                 var title =  responseArray[i].substr(responseArray[i].indexOf("!") + 1); //All chars after ;
                                 title = title.split("_").join(" ");
-                                spanString = spanString + "<tr><td>" + month + " " + day + ", 20" + year + "</td><td><b>" + title + "</b></td><td>" + "<a target=\"_blank\" href='" + path + responseArray[i] + ".pdf'>PDF</a></td></tr>";
+                                spanString = spanString + "<tr><td>" + month + " " + day + ", 20" + year + "</td><td>" + title + "</td><td>" + "<a target=\"_blank\" href='" + path + responseArray[i] + ".pdf'>PDF</a></td></tr>";
                                 console.log(responseArray[i]);
                             }
                             spanString = spanString + "</table>";

@@ -1,30 +1,30 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts\Montserrat-Regular.otf') format("opentype");
+    src: url('fonts/Montserrat-Regular.otf') format('opentype');
+    font-weight: 450;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Bold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts\Montserrat-Bold.otf') format("opentype");
-    font-weight: 500;
-    font-style: bold;
-}
-@font-face {
-    font-family: 'Montserrat';
-    src: url('fonts\Montserrat-Light.otf') format('opentype');
+    src: url('fonts/Montserrat-Light.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts\Montserrat-Hairline.otf') format('opentype');
+    src: url('fonts/Montserrat-Hairline.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
 }
 @font-face {
     font-family: 'Montserrat';
-    src: url('fonts\Montserrat-Black.otf') format('opentype');
+    src: url('fonts/Montserrat-Black.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
 }
@@ -71,7 +71,7 @@ a#fade-header:hover {
 .title {
     font-family: Montserrat;
     font-size: 60;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 5px;
     margin-bottom: 10px;
     text-align: center;
@@ -82,7 +82,7 @@ a#fade-header:hover {
     font-family: Montserrat;
     font-size: 20;
     color: #545454;
-    font-weight: 300;
+    font-weight: 400;
     text-align: center;
 }
 
@@ -96,7 +96,7 @@ a#fade-header:hover {
     font-family: Montserrat;
     font-size: 18;
     color: "#999999";
-    font-weight: 300;
+    font-weight: 400;
     margin-left: 25%;
     margin-right: 25%;
 }
@@ -111,20 +111,21 @@ hr {
 .subtitle {
     font-family: Montserrat;
     font-size: 22;
-    font-style: bold;
+    font-weight: 500;
     text-align: center;
     margin-bottom: 30px;
 }
 
 .projectheader {
     font-family: Montserrat;
+    font-weight: 450;
     margin-left: 10%;
     margin-bottom: 10px
 }
 
 .projectcontent {
     font-family: Montserrat;
-    font-weight: 300;
+    font-weight: 400;
     margin-left: 13%;
     margin-right: 13%;
     margin-bottom: 20px;
@@ -149,7 +150,7 @@ hr {
 
 .table {
     font-family: Montserrat;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 10;
     margin-left: 15%;
     margin-right: 15%;
