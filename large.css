@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Montserrat';
+    font-family: 'montserratregular';
     src: url('fonts/Montserrat-Regular.otf') format('opentype');
     font-weight: 450;
     font-style: normal;
@@ -9,6 +9,10 @@
     src: url('fonts/Montserrat-Bold.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
+}
+@font-face {
+    font-family: 'semibold';
+    src: url('fonts/Montserrat-SemiBold.otf') format('opentype');
 }
 @font-face {
     font-family: 'Montserrat';
@@ -109,16 +113,14 @@ hr {
 }
 
 .subtitle {
-    font-family: Montserrat;
+    font-family: montserratregular;
     font-size: 22;
-    font-weight: 500;
     text-align: center;
     margin-bottom: 30px;
 }
 
 .projectheader {
-    font-family: Montserrat;
-    font-weight: 450;
+    font-family: montserratregular;
     margin-left: 10%;
     margin-bottom: 10px
 }
@@ -149,8 +151,7 @@ hr {
 }
 
 .table {
-    font-family: Montserrat;
-    font-weight: 400;
+    font-family: montserratregular;
     font-size: 10;
     margin-left: 15%;
     margin-right: 15%;
