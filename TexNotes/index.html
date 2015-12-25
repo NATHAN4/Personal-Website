@@ -97,7 +97,7 @@
             function courseChosen(){
                 var select = document.getElementById("course");
                 var selectedCourse = select.options[select.selectedIndex].text;
-                if(selectedCourse != "Choose a Course"){
+                if(selectedCourse != "Choose a Course" && select.options[select.selectedIndex].value != "top"){
                     chosenCourse = selectedCourse;
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function() {
@@ -157,6 +157,7 @@
                 <option value="top">Choose a Course</option>
                 <option value="Math135">Math135</option>
                 <option value="Math137">Math137</option>
+                <option value="top" disabled>-------</option>
                 <option value="Math135">Math136</option>
                 <option value="Math137">Math138</option>
             </select>
