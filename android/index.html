@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../large.css">
+    </head>
+    <body>
+        <script>
+        
+            function chapterClicked(chapter){
+                var link = document.getElementById(chapter);
+                var inner = link.innerHTML;
+                if(inner[inner.length - 1] == '+'){ //Checking if chapter is expanded or not.
+                    link.innerHTML = inner.substring(0, inner.length - 1)  + '-';
+                    var chapter = document.getElementById("chapter" + chapter);
+                    chapter.style.display="none";
+                }else{
+                    link.innerHTML = inner.substring(0, inner.length - 1)  + '+';
+                    var chapter = document.getElementById("chapter" + chapter);
+                    chapter.style.display="inline";
+                }
+            }
+        
+        </script>
+        <div class="title"> <a id="fade-header" href="../index.html">Nathaniel Woodthorpe</a></div>
+        <div class="header">
+            <span id="header-item">
+                <a id="fade" href="../projects.html">Projects</a>
+            </span>
+            <span id="header-item">
+                <a id="fade" href="../tutorials.html">Tutorials</a>
+            </span>
+            <span id="header-item">
+                <a id="fade" href="../TexNotes/index.html">Notes</a>
+            </span>
+            <span id="header-item">
+                <a id="fade" href="http://github.com/NATHAN4" target="_blank">Github</a>
+            </span>
+            <span id="header-item">
+                <a id="fade" href="../resume.pdf" target="_blank">Resume</a>
+            </span>
+            <span id="header-item">
+                <a id="fade" href="mailto: njwoodthorpe@gmail.com">Contact</a>
+            </span>
+        </div>
+        <hr>
+        <div class="subtitle">
+            Android App Development
+        </div>
+        <div class="chapter">
+            <a  class="chapterlink" href="#" onclick="chapterClicked(1)" id="1">Chapter 1: The Basics &nbsp -</a>
+            <span class="chapters" id="chapter1">
+                <div class="subchapter" id="subchapter1">
+                    <a class="subchapterlink" href="#">Check back soon!</a>
+                </div>
+            </span>
+        </div>
+        
+    </body>
+</html>

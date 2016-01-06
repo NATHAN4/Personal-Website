@@ -72,6 +72,14 @@ a#fade-header:hover {
   border-bottom: 1px solid rgba(144, 22, 17, 1);
 }
 
+#header-item {
+    height: 24px;
+}   
+
+#fade {
+    height: 15px;
+}  
+
 .title {
     font-family: Montserrat;
     font-size: 60;
@@ -93,7 +101,7 @@ a#fade-header:hover {
 #header-item {
     display:inline-block;
     text-align: center;
-    width: 100px;
+    width: 120px;
 }
 
 .content {
@@ -101,8 +109,8 @@ a#fade-header:hover {
     font-size: 18;
     color: "#999999";
     font-weight: 400;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 13%;
+    margin-right: 13%;
 }
 
 hr {
@@ -159,4 +167,27 @@ hr {
 
 td{
     padding:0 15px 5px 15px;
+}
+
+.chapter{
+    font-family: montserratregular;
+    margin-left: 10%;
+    margin-bottom: 10px
+}
+
+#chapter1{
+    display: none;
+}
+
+.chapterlink{
+     color:black;
+}
+
+.subchapter{
+    font-family: Montserrat;
+    font-weight: 400;
+    margin-left: 5%;
+    margin-right: 13%;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
