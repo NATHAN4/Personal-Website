@@ -191,3 +191,20 @@ td{
     margin-top: 7px;
     margin-bottom: 7px;
 }
+
+.tutorialtitle{
+    font-family: montserratregular;
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 10px
+}
+
+.tutorialimage{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin: auto;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
