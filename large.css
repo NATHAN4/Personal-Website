@@ -194,9 +194,8 @@ td{
 
 .tutorialtitle{
     font-family: montserratregular;
-    text-align: center;
-    margin-top: -25px;
-    margin-bottom: 10px
+    margin-left: 10%;
+    margin-bottom: 20px
 }
 
 .tutorialimage{
@@ -205,6 +204,45 @@ td{
     margin: auto;
     border-radius: 15px;
     border-style: solid;
-    border-width: 5px;
+    border-width: 7px;
     border-color: black;
+}
+
+ul {
+    margin: 0;
+}
+
+ul.dashed {
+    list-style-type: none;
+}
+
+ul.dashed > li {
+    text-indent: -22px;
+}
+
+ul.dashed > li:before {
+    content: "-";
+    text-indent: -5px;
+    padding-right: 15px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.tutorialfooter{
+    font-family: montserratregular;
+    text-align: center;
+    margin-bottom: 35px
+}
+
+.footerobject{
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.disabled{
+    pointer-events: none !important;
+    cursor: default;
+    color:Gray;
 }
