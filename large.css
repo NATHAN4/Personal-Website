@@ -246,3 +246,22 @@ li {
     cursor: default;
     color:Gray;
 }
+
+xmp{
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: #F0F0F0;
+    margin-left: 13%;
+    margin-right: 13%;
+}
+
+.inlinecode{
+    font-family: "Courier New", Times, serif;
+    background: #F0F0F0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
