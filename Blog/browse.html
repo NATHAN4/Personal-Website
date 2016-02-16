@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>Browse Blog - Nathaniel Woodthorpe</title>
+        <meta name="description" content="Hi, my name is Nathaniel Woodthorpe. This is a blog where I might post to ocasionally when I have something I want to say. :)"/>
+        <meta name="robots" content="index,follow" />
+        <meta name="keywords" content="Nathaniel Woodthorpe, Nathaniel, Woodthorpe, Personal Site, University of Waterloo, Blog, Software Developer"/>
+        <link rel="stylesheet" type="text/css" href="../large.css?refresh=1">
+        <link rel="icon" href="../logo.png">
+        
+        <script src="topics.js?refresh=1"></script>
+        <script>
+            //Function to format our raw input into a nice date string
+            //Input format: MMDDYY
+            //Output Format: Decmber 27, 2015
+            function parseDate(rawDate){
+                var month = rawDate.substring(0, 2);
+                var day = rawDate.substring(2, 4);
+                var year = rawDate.substring(4, 6);
+                
+                year = "20" + year;
+                
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                month = months[parseInt(month) - 1];
+                
+                return (month + " " + day + ", " + year);
+            }
+            
+            //From le stackoverflow
+            //Retrieves a GET var from the URL
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            
+            //Builds the page links according to current page and number of pages
+            function buildPaginate(){
+                var firstPage = 0; //First page is always 0
+                var lastPage = Math.floor((topicJSON.length - 1) / 10);
+                var page = getParameterByName("page", 0);
+                var curPage = (page=="" || page==null) ? 0 : parseInt(page);
+                var k = 2; //Number of entries on either side of current
+                var links = [];
+                //Build list of page numbers
+                for(var i = curPage-k; i<=curPage+k; i++){
+                    console.log(i);
+                    if(i >= firstPage && i<=lastPage)
+                        links.push(i);
+                }
+                
+                var pageSpan = document.getElementById("pageLinks")
+                var firstLink = document.createElement("a");
+                firstLink.innerHTML = "FIRST ";
+                firstLink.setAttribute("href", "browse.html?page=" + firstPage);
+                
+                var lastLink = document.createElement("a");
+                lastLink.innerHTML = "LAST";
+                lastLink.setAttribute("href", "browse.html?page=" + lastPage);
+                
+                pageSpan.appendChild(firstLink);
+                for(var i = 0; i<links.length; i++){
+                    var link = document.createElement("a");
+                    if(links[i] == curPage){
+                        link.innerHTML = "<b>" + (links[i] + 1) + "</b>";
+                    }else{
+                        link.innerHTML = (links[i] + 1);
+                    }
+                    link.setAttribute("href", "browse.html?page=" + links[i]);
+                    link.className = "pageLink";
+                    pageSpan.appendChild(link)
+                }
+                
+                pageSpan.appendChild(lastLink);
+            }
+            
+            //Fills browse page with content according to JSON file and page number
+            function fillBrowsePage(){
+                buildPaginate();
+                var contentSpan = document.getElementById("content");
+                var page = getParameterByName("page", 0);
+                page = (page=="" || page==null) ? 0 : parseInt(page);
+                var lowerbound = page * 10;
+                var upperbound = Math.min(topicJSON.length-1, page*10 + 9); //Ensure no out of bounds exceptions
+                for(var i = lowerbound; i<=upperbound; i++){
+                    console.log("CHECK: " + i);
+                    var headerDiv = document.createElement("div");
+                    headerDiv.className = "blogheader";
+                    headerDiv.innerHTML = topicJSON[i].Title;
+                    
+                    var dateDiv = document.createElement("div");
+                    dateDiv.className = "blogdate";
+                    dateDiv.innerHTML = parseDate(topicJSON[i].Date);
+                    
+                    var hintDiv = document.createElement("div");
+                    hintDiv.className = "latesthint";
+                    hintDiv.innerHTML = topicJSON[i].Hint;
+                    
+                    var viewLink = document.createElement("a");
+                    viewLink.setAttribute('href', "view.html?date="+topicJSON[i].Date);
+                    viewLink.innerHTML = " (View Full Post)";
+                    
+                    contentSpan.appendChild(headerDiv);
+                    contentSpan.appendChild(dateDiv);
+                    hintDiv.appendChild(viewLink);
+                    contentSpan.appendChild(hintDiv);
+                    contentSpan.appendChild(document.createElement("hr"));
+                }
+            }
+        </script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-51916590-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body onload="fillBrowsePage()">
+    <div class="global">
+        <div class="header">
+            <div class="nameplate" onclick="document.location.href='../index.html'">
+                <div class="nameicon"></div>
+                
+                <div class="namecontainer">
+                    <div class="nametop">
+                        Nathaniel Woodthorpe
+                    </div>
+                    <div class="namebottom">
+                        Software Developer
+                    </div>
+                </div>
+            </div>
+            <div class="linkbar">
+                <div class="link">
+                    <a id="fade" href="mailto:njwoodthorpe@gmail.com">Contact</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="https://github.com/nwoodthorpe">Github</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="index.html">Blog</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="../TexNotes/">Notes</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="../projects.html">Projects</a>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="title">
+                <a href="index.html">Blog</a> / Browse
+            </div>
+        
+            <div id="content">
+
+            </div>
+
+            <center>
+                <div id="pageLinks" class="content">
+
+                </div>
+            </center>
+        </div>
+    </body>
+</html>

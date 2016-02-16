@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>Blog - Nathaniel Woodthorpe</title>
+        <meta name="description" content="Hi, my name is Nathaniel Woodthorpe. This is a blog where I might post to ocasionally when I have something I want to say. :)"/>
+        <meta name="robots" content="index,follow" />
+        <meta name="keywords" content="Nathaniel Woodthorpe, Nathaniel, Woodthorpe, Personal Site, University of Waterloo, Blog, Software Developer"/>
+        <link rel="stylesheet" type="text/css" href="../large.css?refresh=1">
+        <link rel="icon" href="../logo.png">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-51916590-2', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        <script src="topics.js?refresh=1"></script>
+        <script>
+            //Function to format our raw input into a nice date string
+            //Input format: MMDDYY
+            //Output Format: Decmber 27, 2015
+            function parseDate(rawDate){
+                var month = rawDate.substring(0, 2);
+                var day = rawDate.substring(2, 4);
+                var year = rawDate.substring(4, 6);
+                
+                year = "20" + year;
+                
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                month = months[parseInt(month) - 1];
+                
+                return (month + " " + day + ", " + year);
+            }
+            
+            //Function reads the topic JSON file and updates the latest post accordingly
+            function fillLatestTopic(array){
+                if(array == null || array.length < 1) 
+                    return;
+                
+                var date = parseDate(array[0].Date);
+                var title = array[0].Title;
+                var hint = array[0].Hint;
+                
+                var latestPostTitle = document.getElementById("latestTitle");
+                var latestPostHint = document.getElementById("latestHint");
+                var latestPostDate = document.getElementById("latestDate");
+                
+                latestPostTitle.innerHTML = title;
+                latestPostDate.innerHTML = date;
+                latestPostHint.innerHTML = hint;
+                
+                var viewLink = document.createElement("a");
+                viewLink.setAttribute('href', "view.html?date=" + array[0].Date);
+                viewLink.innerHTML = " (View Full Post)";
+                
+                latestPostHint.appendChild(viewLink);
+            }
+        </script>
+        
+    </head>
+    <body onload="fillLatestTopic(topicJSON)">
+    <div class="global">
+        <div class="header">
+            <div class="nameplate" onclick="document.location.href='../index.html'">
+                <div class="nameicon"></div>
+                
+                <div class="namecontainer">
+                    <div class="nametop">
+                        Nathaniel Woodthorpe
+                    </div>
+                    <div class="namebottom">
+                        Software Developer
+                    </div>
+                </div>
+            </div>
+            <div class="linkbar">
+                <div class="link">
+                    <a id="fade" href="mailto:njwoodthorpe@gmail.com">Contact</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="https://github.com/nwoodthorpe">Github</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="index.html">Blog</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="../TexNotes/">Notes</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="../projects.html">Projects</a>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="title">
+                Blog
+            </div>
+            <div class="content">
+                <a href="search.html">SEARCH TOPICS</a> or <a href="browse.html">BROWSE BY DATE</a>
+            </div>
+            <div class="content">
+                Welcome to my blog! I'll post here ocasionally when I have things to say or when I want to rant. If you have any feedback, send me an email at <a href="mailto:njwoodthorpe@gmail.com">njwoodthorpe@gmail.com</a>.
+            </div>
+            <hr/>
+            <div class="title">
+                Latest Post
+            </div>
+            <div class="blogheader" id="latestTitle">
+            
+            </div>
+            <div class="blogdate" id="latestDate">
+            
+            </div>
+            <div class="latesthint" id="latestHint">
+
+            </div>
+        </div>
+    </div>
+                                                       </body>
+</html>
