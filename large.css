@@ -1,3 +1,73 @@
+@media screen and (max-width: 1000px) {
+    .body {
+        margin-left: 7% !important;
+        margin-right: 7% !important;
+    }
+    
+    .header {
+        height: 190px !important;
+    }
+    
+    .nameicon {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .nametop {
+        margin-top: 5px !important;
+        height: 30px !important;
+        font-size: 2.3em !important;
+    }
+    
+    .namebottom {
+        margin-top: 15px !important;
+        height: 70px !important;
+        font-size: 2.3em !important;
+    }
+    
+    .linkbarcontainer{
+        float:left !important;
+        width: 100% !important;
+    }
+    
+    .linkbar {
+        float: left !important;
+        font-size: 2em !important;
+        width: 100% !important;
+        margin-top: 15px !important;
+    }
+    
+    .link {
+        margin-right: 45px !important;
+    }
+    
+    .title {
+        font-size: 3em !important;
+    }
+    
+    .textbox {
+        width: 40% !important;
+        height: 50px !important;
+        font-size: 2em !important;
+    }
+    
+    .notetable {
+        font-size: 1.35em !important;
+    }
+    
+    .searchButton {
+        width: 100px;
+        height: 60px;
+        font-size: 1.5em;
+    }
+    
+    .searchBox {
+        width: 500px;
+        height: 60px;
+        font-size: 1.5em;
+    }
+}
+
 @font-face {
     font-family: 'montserrat';
     src: url('fonts/Montserrat-Hairline.otf') format('opentype');
@@ -54,7 +124,7 @@ a:hover, a:active { text-decoration: none; }
 
 a#fade {
     color: black;
-  border-bottom: 1px solid rgba(192, 192, 192, 0);
+  border-bottom: 3px solid rgba(192, 192, 192, 0);
   
   -webkit-transition: border 500ms ease;
   -moz-transition: border 500ms ease;
@@ -64,11 +134,11 @@ a#fade {
 }
 
 a#fade:hover {
-  border-bottom: 1px solid rgba(144, 22, 17, 1);
+  border-bottom: 3px solid rgba(0, 0, 0, 1);
 }
 
 a#fade-header {
-  border-bottom: 1px solid rgba(192, 192, 192, 0);
+  border-bottom: 3px solid rgba(192, 192, 192, 0);
     color: black;
   
   -webkit-transition: border 500ms ease;
@@ -79,7 +149,7 @@ a#fade-header {
 }
 
 a#fade-header:hover {
-  border-bottom: 1px solid rgba(144, 22, 17, 1);
+  border-bottom: 3px solid rgba(0, 0, 0, 1);
 }
 
 .global {
@@ -126,9 +196,14 @@ a#fade-header:hover {
     color: darkgray
 }
 
+.linkbarcontainer{
+    float:right;
+    width: 60%;
+}
+
 .linkbar {
     float: right;
-    width: 55%;
+    width: auto;
     font-family: montserrat;
     font-weight: 400;
     color: black;
@@ -136,7 +211,7 @@ a#fade-header:hover {
 }
 
 .link {
-    float: right;
+    display: inline;
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
@@ -206,16 +281,10 @@ a#fade-header:hover {
     margin-bottom: 10px;
 }
 
-.table {
+.notetable {
     font-family: montserrat;
-    font-weight: 300 !important;
-    font-size: 13 !important;
-}
-
-table {
-    font-family: montserrat;
-    font-weight: 300 !important;
-    font-size: 13 !important;
+    font-weight: 300;
+    font-size: 13;
 }
 
 td{

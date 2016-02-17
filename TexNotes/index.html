@@ -63,7 +63,7 @@
                                 var year = responseArray[i].substring(4, 6);
                                 var title =  responseArray[i].substr(responseArray[i].indexOf("!") + 1); //All chars after ;
                                 title = title.split("_").join(" ");
-                                spanString = spanString + "<tr><td>" + month + " " + day + ", 20" + year + "</td><td>" + title + "</td><td>" + "<a target=\"_blank\" href='" + path + responseArray[i] + ".pdf'>PDF</a></td></tr>";
+                                spanString = spanString + "<tr><td class='notetable'>" + month + " " + day + ", 20" + year + "</td><td class='notetable'>" + title + "</td><td class='notetable'>" + "<a target=\"_blank\" href='" + path + responseArray[i] + ".pdf'>PDF</a></td></tr>";
                                 console.log(responseArray[i]);
                             }
                             spanString = spanString + "</table>";
@@ -159,19 +159,19 @@
             </div>
             <div class="linkbar">
                 <div class="link">
-                    <a id="fade" href="mailto:njwoodthorpe@gmail.com">Contact</a>
-                </div>
-                <div class="link">
-                    <a id="fade" href="https://github.com/nwoodthorpe">Github</a>
-                </div>
-                <div class="link">
-                    <a id="fade" href="../Blog/">Blog</a>
+                    <a id="fade" href="../projects.html">Projects</a>
                 </div>
                 <div class="link">
                     <a id="fade" href="index.html">Notes</a>
                 </div>
                 <div class="link">
-                    <a id="fade" href="../projects.html">Projects</a>
+                    <a id="fade" href="../Blog/">Blog</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="https://github.com/nwoodthorpe">Github</a>
+                </div>
+                <div class="link">
+                    <a id="fade" href="mailto:njwoodthorpe@gmail.com">Contact</a>
                 </div>
             </div>
         </div>
